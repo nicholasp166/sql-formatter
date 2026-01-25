@@ -49,10 +49,10 @@ export default function Sidebar({
           onChange={(e) => setSqlDialect(e.target.value)}
         >
           <option value="sql">Generic SQL</option>
-          <option value="mysql">MySQL</option>
+          {/*  <option value="mysql">MySQL</option>
           <option value="postgresql">PostgreSQL</option>
           <option value="tsql">SQL Server (T-SQL)</option>
-          <option value="plsql">Oracle (PL/SQL)</option>
+          <option value="plsql">Oracle (PL/SQL)</option>*/}
         </select>
       </div>
     </div>
