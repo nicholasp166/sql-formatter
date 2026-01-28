@@ -3,11 +3,31 @@ import Sidebar from "./components/Sidebar";
 import Input from "./components/Input";
 import Display from "./components/Display";
 
+type SqlDialect =
+  | "sql"
+  | "bigquery"
+  | "clickhouse"
+  | "db2"
+  | "db2i"
+  | "duckdb"
+  | "hive"
+  | "mariadb"
+  | "mysql"
+  | "tidb"
+  | "n1ql"
+  | "plsql"
+  | "postgresql"
+  | "redshift"
+  | "spark"
+  | "sqlite"
+  | "trino"
+  | "tsql";
+
 export default function App() {
   const [formatConfig, setFormatConfig] = useState<string>("");
   const [queryParams, setQueryParams] = useState<string>("");
   const [sqlQuery, setSqlQuery] = useState<string>("");
-  const [sqlDialect, setSqlDialect] = useState<string>("sql");
+  const [sqlDialect, setSqlDialect] = useState<SqlDialect>("sqlite");
 
   return (
     <div className="container-fluid vh-100">

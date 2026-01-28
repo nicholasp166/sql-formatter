@@ -1,10 +1,30 @@
+type SqlDialect =
+  | "sql"
+  | "bigquery"
+  | "clickhouse"
+  | "db2"
+  | "db2i"
+  | "duckdb"
+  | "hive"
+  | "mariadb"
+  | "mysql"
+  | "tidb"
+  | "n1ql"
+  | "plsql"
+  | "postgresql"
+  | "redshift"
+  | "spark"
+  | "sqlite"
+  | "trino"
+  | "tsql";
+
 interface SidebarProps {
   formatConfig: string;
   setFormatConfig: (value: string) => void;
   queryParams: string;
   setQueryParams: (value: string) => void;
-  sqlDialect: string;
-  setSqlDialect: (value: string) => void;
+  sqlDialect: SqlDialect;
+  setSqlDialect: (value: SqlDialect) => void;
 }
 
 export default function Sidebar({
@@ -50,14 +70,14 @@ export default function Sidebar({
           className="form-control"
           id="sqlDialect"
           value={sqlDialect}
-          onChange={(e) => setSqlDialect(e.target.value)}
+          onChange={(e) => setSqlDialect(e.target.value as SqlDialect)}
         >
           <option value="sqlite">SQLite (supports brackets)</option>
-          <option value="sql">Generic SQL</option>
+          {/*<option value="sql">Generic SQL</option>
           <option value="tsql">SQL Server (T-SQL) (supports brackets)</option>
           <option value="mysql">MySQL</option>
           <option value="postgresql">PostgreSQL</option>
-          <option value="plsql">Oracle (PL/SQL)</option>
+          <option value="plsql">Oracle (PL/SQL)</option>*/}
         </select>
       </div>
     </div>
