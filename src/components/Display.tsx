@@ -33,6 +33,7 @@ export default function Display({
   sqlDialect,
 }: DisplayProps) {
   const [formattedQuery, setFormattedQuery] = useState<string>("");
+  const [parameterCount, setParameterCount] = useState<number>(0);
 
   const replaceQueryParams = (query: string, params: string) => {
     try {
@@ -53,6 +54,10 @@ export default function Display({
   };
 
   useEffect(() => {
+    // Calculate parameter count
+    const count = (sqlQuery.match(/\?/g) || []).length;
+    setParameterCount(count);
+
     try {
       // Parse format config with error handling
       let formatOptions: Record<string, any> = {};
@@ -122,7 +127,10 @@ export default function Display({
     <div className="display-section h-100">
       <h2>Formatted SQL Query</h2>
       <div className="form-group h-100">
-        <label htmlFor="formattedQuery">Formatted Query</label>
+        <label htmlFor="formattedQuery">
+          Formatted Query
+          {parameterCount > 0 && ` - Parameterized values = ${parameterCount}`}
+        </label>
         <textarea
           className="form-control h-100"
           id="formattedQuery"
