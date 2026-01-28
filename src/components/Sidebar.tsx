@@ -19,15 +19,19 @@ export default function Sidebar({
     <div className="sidebar">
       <h2>Format Configuration</h2>
       <div className="form-group">
-        <label htmlFor="formatConfig">Format Config</label>
+        <label htmlFor="formatConfig">Format Config (JSON)</label>
         <input
           type="text"
           className="form-control"
           id="formatConfig"
           value={formatConfig}
           onChange={(e) => setFormatConfig(e.target.value)}
-          placeholder="Enter format configuration"
+          placeholder=""
         />
+        <small className="form-text text-muted">
+          Enter JSON configuration for formatting. Example:
+          {`{"keywordCase": "upper", "commaPosition": "before"}`}
+        </small>
       </div>
       <div className="form-group">
         <label htmlFor="queryParams">Query Parameters</label>
@@ -48,11 +52,12 @@ export default function Sidebar({
           value={sqlDialect}
           onChange={(e) => setSqlDialect(e.target.value)}
         >
+          <option value="sqlite">SQLite (supports brackets)</option>
           <option value="sql">Generic SQL</option>
-          {/*  <option value="mysql">MySQL</option>
+          <option value="tsql">SQL Server (T-SQL) (supports brackets)</option>
+          <option value="mysql">MySQL</option>
           <option value="postgresql">PostgreSQL</option>
-          <option value="tsql">SQL Server (T-SQL)</option>
-          <option value="plsql">Oracle (PL/SQL)</option>*/}
+          <option value="plsql">Oracle (PL/SQL)</option>
         </select>
       </div>
     </div>

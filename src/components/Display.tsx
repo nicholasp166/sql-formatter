@@ -5,7 +5,25 @@ interface DisplayProps {
   sqlQuery: string;
   formatConfig: string;
   queryParams: string;
-  sqlDialect: string;
+  sqlDialect:
+    | "sql"
+    | "bigquery"
+    | "clickhouse"
+    | "db2"
+    | "db2i"
+    | "duckdb"
+    | "hive"
+    | "mariadb"
+    | "mysql"
+    | "tidb"
+    | "n1ql"
+    | "plsql"
+    | "postgresql"
+    | "redshift"
+    | "spark"
+    | "sqlite"
+    | "trino"
+    | "tsql";
 }
 
 export default function Display({
@@ -36,11 +54,52 @@ export default function Display({
 
   useEffect(() => {
     try {
-      // Format the query first
+      // Parse format config with error handling
+      let formatOptions: Record<string, any> = {};
+      if (formatConfig) {
+        try {
+          formatOptions = JSON.parse(formatConfig);
+        } catch (parseError: any) {
+          console.warn(
+            "Invalid format config JSON, using default options:",
+            parseError?.message || "Unknown error",
+          );
+          // Try to provide helpful error message to user
+          setFormattedQuery(
+            `Error: Invalid format configuration. Please check your JSON syntax.\n\n${sqlQuery}`,
+          );
+          return;
+        }
+      }
+
+      // Validate and format the query first
+      const validDialects = [
+        "sql",
+        "bigquery",
+        "clickhouse",
+        "db2",
+        "db2i",
+        "duckdb",
+        "hive",
+        "mariadb",
+        "mysql",
+        "tidb",
+        "n1ql",
+        "plsql",
+        "postgresql",
+        "redshift",
+        "spark",
+        "sqlite",
+        "trino",
+        "tsql",
+      ];
+
+      const dialect = validDialects.includes(sqlDialect) ? sqlDialect : "sql";
+
       const formatted = format(sqlQuery, {
-        language: sqlDialect,
-        indent: "  ",
-        ...(formatConfig ? JSON.parse(formatConfig) : {}),
+        language: dialect,
+        tabWidth: 2,
+        ...formatOptions,
       });
 
       // Replace query parameters
