@@ -8,7 +8,9 @@ export default function Input({ sqlQuery, setSqlQuery }: InputProps) {
     <div className="input-section h-100">
       <h2>SQL Query Input</h2>
       <div className="form-group h-100">
-        <label htmlFor="sqlQuery">SQL Query</label>
+        <label htmlFor="sqlQuery" className="pb-1">
+          SQL Query
+        </label>
         <textarea
           className="form-control h-100"
           id="sqlQuery"

@@ -53,6 +53,16 @@ export default function Display({
     }
   };
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(formattedQuery);
+      // You could add a toast notification here if you want
+      console.log("Query copied to clipboard");
+    } catch (error) {
+      console.error("Failed to copy to clipboard:", error);
+    }
+  };
+
   useEffect(() => {
     // Calculate parameter count
     const count = (sqlQuery.match(/\?/g) || []).length;
@@ -126,8 +136,8 @@ export default function Display({
   return (
     <div className="display-section h-100">
       <h2>Formatted SQL Query</h2>
-      <div className="form-group h-100">
-        <label htmlFor="formattedQuery">
+      <div className="form-group h-100 position-relative">
+        <label htmlFor="formattedQuery" className="pb-1">
           Formatted Query
           {parameterCount > 0 && ` - Parameterized values = ${parameterCount}`}
         </label>
@@ -137,6 +147,19 @@ export default function Display({
           value={formattedQuery}
           readOnly
         />
+        <div
+          className=" position-absolute top-0 end-0"
+          style={{ paddingRight: "0.5rem", paddingTop: "2.2rem" }}
+        >
+          <button
+            className="btn btn-outline-secondary "
+            type="button"
+            onClick={copyToClipboard}
+            title="Copy to clipboard"
+          >
+            <i className="bi bi-clipboard"></i>
+          </button>
+        </div>
       </div>
       {queryParams && (
         <div className="query-params">

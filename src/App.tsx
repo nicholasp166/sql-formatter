@@ -42,12 +42,12 @@ export default function App() {
             setSqlDialect={setSqlDialect}
           />
         </div>
-        <div className="col-md-9 h-100">
+        <div className="col-md-9" style={{ height: "85vh" }}>
           <div className="row h-100">
-            <div className="col-md-6 h-100">
+            <div className="col-md-6">
               <Input sqlQuery={sqlQuery} setSqlQuery={setSqlQuery} />
             </div>
-            <div className="col-md-6 h-100">
+            <div className="col-md-6">
               <Display
                 sqlQuery={sqlQuery}
                 formatConfig={formatConfig}

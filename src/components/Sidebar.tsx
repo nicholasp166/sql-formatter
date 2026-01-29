@@ -38,7 +38,7 @@ export default function Sidebar({
   return (
     <div className="sidebar">
       <h2>Format Configuration</h2>
-      <div className="form-group">
+      <div className="form-group" hidden>
         <label htmlFor="formatConfig">Format Config (JSON)</label>
         <input
           type="text"
@@ -79,6 +79,21 @@ export default function Sidebar({
           <option value="postgresql">PostgreSQL</option>
           <option value="plsql">Oracle (PL/SQL)</option>*/}
         </select>
+      </div>
+      <div className="form-group mt-4">
+        <h2>Instructions:</h2>
+        <ol>
+          <li>
+            Select a SQL dialect from the dropdown, paste query paramters into
+            the textbot above.
+          </li>
+          <li>Enter the SQL query noting ? for parameterized variables.</li>
+          <li>
+            Copy the output by clicking on the "Formatted Query" section and
+            using keyboard shortcut like "Ctrl+A" to highlight or use the
+            clipboard button on the top right to copy all.
+          </li>
+        </ol>
       </div>
     </div>
   );
