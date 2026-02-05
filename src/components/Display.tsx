@@ -141,24 +141,26 @@ export default function Display({
           Formatted Query
           {parameterCount > 0 && ` - Parameterized values = ${parameterCount}`}
         </label>
-        <textarea
-          className="form-control h-100"
-          id="formattedQuery"
-          value={formattedQuery}
-          readOnly
-        />
-        <div
-          className=" position-absolute top-0 end-0"
-          style={{ paddingRight: "0.5rem", paddingTop: "2.2rem" }}
-        >
-          <button
-            className="btn btn-outline-secondary "
-            type="button"
-            onClick={copyToClipboard}
-            title="Copy to clipboard"
+        <div className="position-relative h-100">
+          <textarea
+            className="form-control h-100"
+            id="formattedQuery"
+            value={formattedQuery}
+            readOnly
+          />
+          <div
+            className=" position-absolute top-0 end-0"
+            style={{ paddingRight: "0.5rem", paddingTop: "0.5rem" }}
           >
-            <i className="bi bi-clipboard"></i>
-          </button>
+            <button
+              className="btn btn-outline-secondary "
+              type="button"
+              onClick={copyToClipboard}
+              title="Copy to clipboard"
+            >
+              <i className="bi bi-clipboard"></i>
+            </button>
+          </div>
         </div>
       </div>
       {queryParams && (
