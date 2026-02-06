@@ -147,16 +147,24 @@ export default function Display({
             id="formattedQuery"
             value={formattedQuery}
             readOnly
+            style={{ width: "89%" }}
           />
           <div
-            className=" position-absolute top-0 end-0"
-            style={{ paddingRight: "0.5rem", paddingTop: "0.5rem" }}
+            className="position-absolute top-0 end-0 m-2"
+            style={{ zIndex: 10 }}
           >
+            {" "}
             <button
-              className="btn btn-outline-secondary "
+              className="btn btn-outline-secondary"
               type="button"
               onClick={copyToClipboard}
               title="Copy to clipboard"
+              style={{
+                padding: "5px",
+                paddingLeft: "0.85rem",
+                paddingRight: "0.85rem",
+                marginTop: "-10px",
+              }}
             >
               <i className="bi bi-clipboard"></i>
             </button>

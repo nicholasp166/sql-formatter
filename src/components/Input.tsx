@@ -18,6 +18,7 @@ export default function Input({ sqlQuery, setSqlQuery }: InputProps) {
             value={sqlQuery}
             onChange={(e) => setSqlQuery(e.target.value)}
             placeholder="Enter your SQL query here..."
+            style={{ width: "89%" }}
           />
           <div
             className="position-absolute top-0 end-0 m-2"
@@ -28,7 +29,7 @@ export default function Input({ sqlQuery, setSqlQuery }: InputProps) {
               type="button"
               onClick={() => setSqlQuery("")}
               title="Clear input"
-              style={{ padding: "6px" }}
+              style={{ padding: "5px", marginTop: "-10px" }}
             >
               <i className="fas fa-times">Clear</i>
             </button>
