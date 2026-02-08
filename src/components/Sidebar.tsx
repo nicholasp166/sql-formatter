@@ -95,21 +95,19 @@ export default function Sidebar({
           </li>
         </ol>
       </div>
-      <footer className="footer text-secondary">
-        <div className="position-relative">
+      <footer className="footer text-secondary mt-auto py-2">
+        <div className="">
           <a
             href="https://github.com/nicholasp166/sql-formatter"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-secondary hover:text-primary bottom-0 end-0"
+            className="text-secondary hover:text-primary"
+            title="GitHub Repository"
           >
             <svg
-              className=" inline-block"
-              style={{
-                maxWidth: "15%",
-                height: "auto",
-                paddingTop: "43%",
-              }}
+              className="mx-auto mb-3"
+              width="64"
+              height="64"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
